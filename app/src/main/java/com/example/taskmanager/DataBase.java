@@ -25,14 +25,14 @@ public class DataBase extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String query = String.format("CREATE TABLE %s (ID INTAGERE PRIMARY KEY AUTOINCREMENT, " +
+        String query = String.format("CREATE TABLE %s (ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 "%s TEXT NOT NULL);", db_table, db_column);
         db.execSQL(query);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        String query = String.format("DELETE TABLE IF EXISTS %s", db_table);
+        String query = String.format("DROP TABLE IF EXISTS %s", db_table);
         db.execSQL(query);
         onCreate(db);
     }
